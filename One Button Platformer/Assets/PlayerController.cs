@@ -4,6 +4,10 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	public int flyingForce = 5;
+	public int jumpForceX = 5;
+	public int jumpForceY = 5;
+
+	private Vector2 jumpForce;
 
 	private Rigidbody2D rigidBody;
 	private Transform bottomLeft;
@@ -18,15 +22,16 @@ public class PlayerController : MonoBehaviour {
 		rigidBody = GetComponent<Rigidbody2D>();
 		bottomLeft = transform.FindChild("bottomLeft");
 		bottomRight = transform.FindChild("bottomRight");
+		jumpForce = new Vector2(jumpForceX, jumpForceY);
 	}
 
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Space) && StandingOnFloor()) {
-			rigidBody.AddForce(new Vector2(5,5), ForceMode2D.Impulse);
+			rigidBody.AddForce(jumpForce, ForceMode2D.Impulse);
 			addingForceUp = true;
 		}
 
-		if (Input.GetKeyUp(KeyCode.Space)) {
+		if (Input.GetKeyUp(KeyCode.Space) || rigidBody.velocity.y < 2) {
 			addingForceUp = false;
 		}
 
@@ -34,8 +39,13 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
+		// TODO ubírat sílu v závislosti na svislé rychlosti - úplně nahoře - nepřidávat vůbec
 		if (addingForceUp) {
 			rigidBody.AddForce(Vector2.up * flyingForce);
+
+			if (rigidBody.velocity.x < 1) {
+				rigidBody.AddForce(Vector2.right * 10);
+			}
 		}
 	}
 
