@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
-	public int flyingForce = 5;
+	public float flyingForce = 5.0f;
 	public int jumpForceX = 5;
 	public int jumpForceY = 5;
 
@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody2D rigidBody;
 	private Transform bottomLeft;
 	private Transform bottomRight;
+	private Collider2D collider;
 
 	private bool addingForceUp = false;
 
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour {
 		bottomLeft = transform.FindChild("bottomLeft");
 		bottomRight = transform.FindChild("bottomRight");
 		jumpForce = new Vector2(jumpForceX, jumpForceY);
+		collider = GetComponent<Collider2D>();
 	}
 
 	void Update () {
@@ -41,7 +43,7 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate () {
 		// TODO ubírat sílu v závislosti na svislé rychlosti - úplně nahoře - nepřidávat vůbec
 		if (addingForceUp) {
-			rigidBody.AddForce(Vector2.up * flyingForce);
+			rigidBody.AddForce(new Vector2(0, rigidBody.velocity.y) * flyingForce);
 
 			if (rigidBody.velocity.x < 1) {
 				rigidBody.AddForce(Vector2.right * 10);
@@ -49,12 +51,21 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionEnter2D () {
+		if (StandingOnFloor()) {
+			StopPlayer ();
+		}
+	}
+
+	void StopPlayer () {
+		rigidBody.velocity = Vector2.zero;
+	}
 
 
 
 	private bool StandingOnFloor() {
-		RaycastHit2D hitLeft = Physics2D.Raycast(bottomLeft.position, -Vector2.up, 0.1f);
-		RaycastHit2D hitRight = Physics2D.Raycast(bottomRight.position, -Vector2.up, 0.1f);
+		RaycastHit2D hitLeft = Physics2D.Raycast(bottomLeft.position, Vector2.down, 0.01f);
+		RaycastHit2D hitRight = Physics2D.Raycast(bottomRight.position, Vector2.down, 0.01f);
 
 		return hitLeft.collider != null || hitRight.collider != null;
 	}
