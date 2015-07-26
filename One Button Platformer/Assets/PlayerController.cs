@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 	public float flyingForce = 5.0f;
 	public int jumpForceX = 5;
 	public int jumpForceY = 5;
+	public float maxJumpHeight = 5.0f;
 
 	private Vector2 jumpForce;
 
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour {
 	private Collider2D collider;
 
 	private bool addingForceUp = false;
+	private float beforeJumpY;
 
 	// for debugging reasons
 	private bool standingOnFloor;
@@ -29,11 +31,10 @@ public class PlayerController : MonoBehaviour {
 
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Space) && StandingOnFloor()) {
-			rigidBody.AddForce(jumpForce, ForceMode2D.Impulse);
-			addingForceUp = true;
+			Jump ();
 		}
 
-		if (Input.GetKeyUp(KeyCode.Space) || rigidBody.velocity.y < 2) {
+		if (addingForceUp && (Input.GetKeyUp(KeyCode.Space) || rigidBody.velocity.y <= 0)) {
 			addingForceUp = false;
 		}
 
@@ -41,9 +42,8 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		// TODO ubírat sílu v závislosti na svislé rychlosti - úplně nahoře - nepřidávat vůbec
 		if (addingForceUp) {
-			rigidBody.AddForce(new Vector2(0, rigidBody.velocity.y) * flyingForce);
+			rigidBody.AddForce(new Vector2(0, maxJumpHeight - (JumpHeight())) * flyingForce);
 
 			if (rigidBody.velocity.x < 1) {
 				rigidBody.AddForce(Vector2.right * 10);
@@ -57,10 +57,22 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	void StopPlayer () {
+
+
+
+	private void Jump() {
+		beforeJumpY = transform.position.y;
+		rigidBody.AddForce (jumpForce, ForceMode2D.Impulse);
+		addingForceUp = true;
+	}
+
+	private void StopPlayer () {
 		rigidBody.velocity = Vector2.zero;
 	}
 
+	private float JumpHeight() {
+		return transform.position.y - beforeJumpY;
+	}
 
 
 	private bool StandingOnFloor() {
