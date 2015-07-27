@@ -2197,7 +2197,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 509885361}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1001 &505032883
 Prefab:
   m_ObjectHideFlags: 0
@@ -2316,11 +2316,10 @@ Transform:
   m_LocalPosition: {x: -40.0800018, y: 7.07999992, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2091549497}
   - {fileID: 1236655126}
   - {fileID: 501302685}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!50 &509885362
 Rigidbody2D:
   serializedVersion: 2
@@ -3092,7 +3091,7 @@ Transform:
   - {fileID: 795091607}
   - {fileID: 1018321970}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &673457140 stripped
 Transform:
   m_PrefabParentObject: {fileID: 439890, guid: b33d46f3ab596a749ac6d892226dc98a, type: 2}
@@ -5355,7 +5354,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 509885361}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1001 &1243092168
 Prefab:
   m_ObjectHideFlags: 0
@@ -7709,7 +7708,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!4 &1769593971 stripped
 Transform:
   m_PrefabParentObject: {fileID: 439890, guid: b33d46f3ab596a749ac6d892226dc98a, type: 2}
@@ -9334,6 +9333,7 @@ GameObject:
   - 92: {fileID: 2091549495}
   - 124: {fileID: 2091549494}
   - 81: {fileID: 2091549493}
+  - 114: {fileID: 2091549498}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9402,11 +9402,24 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2091549492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.68999958, y: .0799999982, z: -1}
+  m_LocalPosition: {x: -31.3900032, y: 7.15999985, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 509885361}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &2091549498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2091549492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21dd982eb98ffdc4bb66b49353d5d931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 509885361}
+  rightOffset: 9
 --- !u!1001 &2108576337
 Prefab:
   m_ObjectHideFlags: 0
