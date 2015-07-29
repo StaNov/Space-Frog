@@ -15,6 +15,7 @@ public class DeadBlock : MonoBehaviour {
 		if (player.getLastVisitedCheckpoint() != null) {
 			Vector3 checkpointPosition = player.getLastVisitedCheckpoint().position;
 			player.transform.position = new Vector3(checkpointPosition.x, checkpointPosition.y, playerPosition.z);
+			player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 		} else {
 			Application.LoadLevel(Application.loadedLevel);
 		}
