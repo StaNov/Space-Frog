@@ -11,13 +11,12 @@ public class DeadBlock : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D collider) {
 		Vector3 playerPosition = player.transform.position;
-		Vector3 checkpointPosition = player.getLastVisitedCheckpoint().position;
-
 
 		if (player.getLastVisitedCheckpoint() != null) {
+			Vector3 checkpointPosition = player.getLastVisitedCheckpoint().position;
 			player.transform.position = new Vector3(checkpointPosition.x, checkpointPosition.y, playerPosition.z);
 		} else {
-			Application.LoadLevel(0);
+			Application.LoadLevel(Application.loadedLevel);
 		}
 	}
 }

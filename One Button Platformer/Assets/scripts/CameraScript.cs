@@ -3,9 +3,15 @@ using System.Collections;
 
 public class CameraScript : MonoBehaviour {
 
-	public Transform player;
 	public float rightOffset;
 	public float cameraSpeed = 10;
+	
+	private Transform player;
+
+
+	void Start () {
+		player = GameObject.FindWithTag("Player").transform;
+	}
 
 	void Update () {
 		Vector3 targetPosition = player.position + new Vector3(rightOffset,0,-1);

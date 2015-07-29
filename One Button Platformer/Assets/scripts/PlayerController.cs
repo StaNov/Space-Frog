@@ -13,21 +13,16 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody2D rigidBody;
 	private Transform bottomLeft;
 	private Transform bottomRight;
-	private Collider2D collider;
 
 	private bool addingForceUp = false;
 	private float beforeJumpY;
 	private Transform lastVisitedCheckpoint;
-
-	// for debugging reasons
-	private bool standingOnFloor;
 
 	void Start() {
 		rigidBody = GetComponent<Rigidbody2D>();
 		bottomLeft = transform.FindChild("bottomLeft");
 		bottomRight = transform.FindChild("bottomRight");
 		jumpForce = new Vector2(jumpForceX, jumpForceY);
-		collider = GetComponent<Collider2D>();
 	}
 
 	void Update () {
@@ -38,8 +33,6 @@ public class PlayerController : MonoBehaviour {
 		if (addingForceUp && (Input.GetKeyUp(KeyCode.Space) || rigidBody.velocity.y <= 0)) {
 			addingForceUp = false;
 		}
-
-		standingOnFloor = StandingOnFloor();
 	}
 
 	void FixedUpdate () {
