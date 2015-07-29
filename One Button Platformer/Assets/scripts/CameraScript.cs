@@ -5,6 +5,7 @@ public class CameraScript : MonoBehaviour {
 
 	public Transform player;
 	public float rightOffset;
+	public float cameraSpeed = 10;
 
 	void Update () {
 		Vector3 targetPosition = player.position + new Vector3(rightOffset,0,-1);
@@ -12,7 +13,7 @@ public class CameraScript : MonoBehaviour {
 		if (Vector3.Distance(transform.position, targetPosition) < 0.01) {
 			transform.position = targetPosition;
 		} else {
-			transform.position = Vector3.Lerp (transform.position, targetPosition, 0.01f);
+			transform.position = Vector3.Lerp (transform.position, targetPosition, cameraSpeed / 1000);
 		}
 	}
 }

@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 
 	private bool addingForceUp = false;
 	private float beforeJumpY;
+	private Transform lastVisitedCheckpoint;
 
 	// for debugging reasons
 	private bool standingOnFloor;
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Space) && StandingOnFloor()) {
+		if (Input.GetKey(KeyCode.Space) && StandingOnFloor() && !addingForceUp) {
 			Jump ();
 		}
 
@@ -55,6 +56,15 @@ public class PlayerController : MonoBehaviour {
 		if (StandingOnFloor()) {
 			StopPlayer ();
 		}
+	}
+
+	// TODO přejmenovat metody na velké počáteční
+	public Transform getLastVisitedCheckpoint() {
+		return lastVisitedCheckpoint;
+	}
+	
+	public void setLastVisitedCheckpoint(Transform checkpoint) {
+		lastVisitedCheckpoint = checkpoint;
 	}
 
 
