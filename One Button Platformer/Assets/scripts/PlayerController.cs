@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetKey(KeyCode.Space) && StandingOnFloor() && !addingForceUp) {
+		if (Input.GetKey(KeyCode.Space) && StandingOnFloor() && rigidBody.velocity.y == 0) {
 			Jump ();
 		}
 
