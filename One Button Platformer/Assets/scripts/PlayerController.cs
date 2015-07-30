@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
 	private Vector2 jumpForce;
 
 	private Rigidbody2D rigidBody;
+	public LayerMask layerMask;
 	private Transform bottomLeft;
 	private Transform bottomRight;
 
@@ -79,8 +80,8 @@ public class PlayerController : MonoBehaviour {
 
 
 	private bool StandingOnFloor() {
-		RaycastHit2D hitLeft = Physics2D.Raycast(bottomLeft.position, Vector2.down, 0.01f);
-		RaycastHit2D hitRight = Physics2D.Raycast(bottomRight.position, Vector2.down, 0.01f);
+		RaycastHit2D hitLeft = Physics2D.Raycast(bottomLeft.position, Vector2.down, 0.01f, layerMask);
+		RaycastHit2D hitRight = Physics2D.Raycast(bottomRight.position, Vector2.down, 0.01f, layerMask);
 
 		return hitLeft.collider != null || hitRight.collider != null;
 	}

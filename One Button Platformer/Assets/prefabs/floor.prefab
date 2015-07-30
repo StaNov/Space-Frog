@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 439890}
   - 61: {fileID: 6147336}
   - 212: {fileID: 21226082}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,6 +84,14 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: becf4c3cc76948346b9838f7fcf0393f,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 175012}
