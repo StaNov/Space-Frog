@@ -39,25 +39,25 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate () {
 		if (addingForceUp) {
 			rigidBody.AddForce(new Vector2(0, maxJumpHeight - (JumpHeight())) * flyingForce);
-
-			if (rigidBody.velocity.x < 1) {
-				rigidBody.AddForce(Vector2.right * 10);
-			}
 		}
+		
+		if (! StandingOnFloor() && rigidBody.velocity.x < 1) {
+			rigidBody.AddForce(Vector2.right * 10);
+		}
+
+		StopPlayerIfStandingOnFloor();
 	}
 
 	void OnCollisionEnter2D () {
-		if (StandingOnFloor()) {
-			StopPlayer ();
-		}
+		StopPlayerIfStandingOnFloor();
 	}
 
 	// TODO přejmenovat metody na velké počáteční
-	public Transform getLastVisitedCheckpoint() {
+	public Transform GetLastVisitedCheckpoint() {
 		return lastVisitedCheckpoint;
 	}
 	
-	public void setLastVisitedCheckpoint(Transform checkpoint) {
+	public void SetLastVisitedCheckpoint(Transform checkpoint) {
 		lastVisitedCheckpoint = checkpoint;
 	}
 
@@ -73,9 +73,15 @@ public class PlayerController : MonoBehaviour {
 	private void StopPlayer () {
 		rigidBody.velocity = Vector2.zero;
 	}
-
+	
 	private float JumpHeight() {
 		return transform.position.y - beforeJumpY;
+	}
+	
+	private void StopPlayerIfStandingOnFloor() {
+		if (! addingForceUp && StandingOnFloor()) {
+			StopPlayer ();
+		}
 	}
 
 

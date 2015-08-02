@@ -11,15 +11,20 @@ public class CameraScript : MonoBehaviour {
 
 	void Start () {
 		player = GameObject.FindWithTag("Player").transform;
+		transform.position = TargetPosition();
 	}
 
 	void Update () {
-		Vector3 targetPosition = player.position + new Vector3(rightOffset,0,-1);
+		Vector3 targetPosition = TargetPosition();
 
 		if (Vector3.Distance(transform.position, targetPosition) < 0.01) {
 			transform.position = targetPosition;
 		} else {
 			transform.position = Vector3.Lerp (transform.position, targetPosition, cameraSpeed / 1000);
 		}
+	}
+
+	private Vector3 TargetPosition() {
+		return player.position + new Vector3(rightOffset,0,-1);
 	}
 }

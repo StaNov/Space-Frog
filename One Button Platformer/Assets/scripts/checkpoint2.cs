@@ -13,7 +13,7 @@ public class Checkpoint : MonoBehaviour {
 		}
 
 		PlayerController controller = collider.GetComponent<PlayerController>();
-		controller.setLastVisitedCheckpoint(transform);
+		controller.SetLastVisitedCheckpoint(transform);
 		updateGraphics();
 
 		visited = true;
