@@ -14,7 +14,10 @@ public class EndScript : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D collider) {
 
 		#if UNITY_EDITOR
-		GoBackToEditorIfTestLevel ();
+		if (Application.loadedLevelName.StartsWith ("test")) {
+			RestartLevel ();
+			return;
+		}
 		#endif
 
 		if (Application.loadedLevel < Application.levelCount - 1) {
@@ -25,9 +28,7 @@ public class EndScript : MonoBehaviour {
 
 	}
 
-	void GoBackToEditorIfTestLevel () {
-		if (Application.loadedLevelName.StartsWith ("test")) {
-			UnityEditor.EditorApplication.isPlaying = false;
-		}
+	void RestartLevel () {
+		Application.LoadLevel(Application.loadedLevel);
 	}
 }
