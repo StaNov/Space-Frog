@@ -2795,8 +2795,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1687340844}
-  - {fileID: 752404335}
-  - {fileID: 1599236405}
   - {fileID: 321889280}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -3150,33 +3148,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b33d46f3ab596a749ac6d892226dc98a, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &752404334
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 752404335}
-  m_Layer: 0
-  m_Name: deadBlocks
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &752404335
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 752404334}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 669634266}
-  m_RootOrder: 1
 --- !u!4 &754231937 stripped
 Transform:
   m_PrefabParentObject: {fileID: 439890, guid: b33d46f3ab596a749ac6d892226dc98a, type: 2}
@@ -6459,33 +6430,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b33d46f3ab596a749ac6d892226dc98a, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1599236404
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1599236405}
-  m_Layer: 0
-  m_Name: checkpoints
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1599236405
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1599236404}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 669634266}
-  m_RootOrder: 2
 --- !u!4 &1630178529 stripped
 Transform:
   m_PrefabParentObject: {fileID: 439890, guid: b33d46f3ab596a749ac6d892226dc98a, type: 2}
