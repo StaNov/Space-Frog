@@ -148,7 +148,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ovl\xE1d\xE1n\xED: Mezern\xEDk, nic v\xEDc!\n\nStart: Stiskni mezern\xEDk"
+  m_Text: 'Controls: Spacebar, nothing more!
+
+
+    Start: Press spacebar'
 --- !u!114 &11431584
 MonoBehaviour:
   m_ObjectHideFlags: 1
